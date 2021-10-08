@@ -1,0 +1,82 @@
+#--------
+#List_Refresher
+#Graden_Rusk
+#--------
+
+weapons = ["Grasscutter Katana", "Executioners Blade"] #You can choose from one of these
+player = []
+
+def start():
+    print("Welcome to the jungle, here you will find many of plants, animals and murderous tribes of people.")
+    print("Now don't be frightened you get some weapons to choose form to use.")
+    
+    print("""
+1. Grasscutter Katana
+2. Executioners Blade # prints out your options
+""")
+    Weapon_select()
+
+def Weapon_select():
+    try:
+        weapon_choice = int(input(">>>" ))
+        if weapon_choice == 1:
+            print("You grab the mighty Grasscutter Katana, as you go to grab it you also find a gold coin on the floor.")
+            player.append('Grasscutter Katana')#gives the player the grasscutter katana
+            player.append("Gold Coin")#gives the player the gold coin
+            weapons.remove("Grasscutter Katana")#removes grasscutter katana from the weapons list
+            Walk()
+        else:
+            print("You decide to take the defensive sword... The Executioners Blade.")
+            player.append("Executioners Blade")#gives the player executioner blade
+            weapons.remove("Executioners Blade")#gets rid of the Executioners blade from the weapons list
+            Walk()
+        
+    except:
+        print("Number please.")
+        Weapon_select()
+        
+def Walk():
+    print("After getting your new sword you walk along the path to the main village in the jungle.")
+    print("You come across a merchant, he asks you if you want to play a game with him,")
+    awnser = input("Do you play the game?\n>>>" )
+    
+    if awnser == 'yes' or awnser == 'y' or awnser == 'Yes' or awnser == 'Y':#if you say yes it will play this
+        print("You played the game and you even won, you then continue")
+        player.append('Todem of undying')
+        print("on with your walk and in no time you find yourself in the village.")
+        final_battle()
+    else:
+        print("you decide not to play the game, thats rude of you.")#if not it plays this
+        final_battle()
+    
+
+def final_battle():
+    print("As you walk around in the village you are attacked by a thug who")
+    print("stole the other sword.")
+    print("you decide to battle them for the sword.")
+    
+    if 'Grasscutter Katana' in player:#checks if you have the grasscutter katana
+        print("You fight them heroically but you get shanked in the back.")
+        
+        if 'Todem of undying' in player:#if you have the grasscutter and the totem of undying it plays this
+            print("You magically live through that from the Totem of undying you got from the merchant.")
+            print("I didn't feel like telling you that you got it, im lazy.")
+            print("you then stab them and win!")
+            
+        else:
+            print("You died right there and then, you lose!")#if not you die
+    else:
+        print("You fight them on the defensive using the wide part of your sword as a sheild.")
+        print("in the end you are able to defeat them with a giant slice.")#this happens when you have the executioners blade.
+        
+        if 'Todem of undying' in player:#checks for the totem of undying
+            print("You win!")
+            
+        else:
+            print("They got back up when you weren't looking and blam.")
+            print("They stole the Totem of undying from the merchant and lived through the slice.")
+            print("You lose!")
+    
+    
+
+start()
